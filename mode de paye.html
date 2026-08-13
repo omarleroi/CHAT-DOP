@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOP - Mode de paiement</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+        }
+
+        .page {
+            width: 600px;
+            margin: 60px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .titre {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .titre h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .titre p {
+            color: #6b7280;
+        }
+
+        .solde {
+            background: #111827;
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .solde p {
+            color: #d1d5db;
+            margin-bottom: 10px;
+        }
+
+        .solde h2 {
+            font-size: 35px;
+        }
+
+        .champ {
+            margin-bottom: 20px;
+        }
+
+        .champ label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .champ input,
+        .champ select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .confirmer {
+            width: 100%;
+            padding: 15px;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .retour {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+        .confirmer:hover {
+            background: #374151;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="titre">
+            <h1>Effectuer un paiement</h1>
+            <p>Choisissez votre mode de paiement</p>
+        </div>
+
+
+        <!-- SOLDE -->
+
+        <div class="solde">
+
+            <p>SOLDE DISPONIBLE</p>
+
+            <h2>
+                <span id="solde">0</span> €
+            </h2>
+
+        </div>
+
+
+        <!-- MODE DE PAIEMENT -->
+
+        <div class="champ">
+
+            <label for="mode">
+                Mode de paiement
+            </label>
+
+            <select id="mode">
+
+                <option value="">
+                    Choisir un mode
+                </option>
+
+                <option value="solde">
+                    💰 Solde DOP
+                </option>
+
+                <option value="carte">
+                    💳 Carte bancaire
+                </option>
+
+                <option value="paypal">
+                    PayPal
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- COMPTE DESTINATAIRE -->
+
+        <div class="champ">
+
+            <label for="compte">
+                Numéro du compte destinataire
+            </label>
+
+            <input
+                type="text"
+                id="compte"
+                placeholder="Ex : DOP-200"
+            >
+
+        </div>
+
+
+        <!-- MONTANT -->
+
+        <div class="champ">
+
+            <label for="montant">
+                Montant
+            </label>
+
+            <input
+                type="number"
+                id="montant"
+                placeholder="Ex : 50"
+                min="1"
+            >
+
+        </div>
+
+
+        <!-- CODE -->
+
+        <div class="champ">
+
+            <label for="code">
+                Code de validation
+            </label>
+
+            <input
+                type="password"
+                id="code"
+                placeholder="Votre code"
+            >
+
+        </div>
+
+
+        <button class="confirmer" onclick="confirmerPaiement()">
+            CONFIRMER LE PAIEMENT
+        </button>
+
+<a href="CART200.html" class="confirmer retour">
+    ← RETOUR À MON COMPTE
+</a>
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        let solde = Number(localStorage.getItem("solde")) || 500000000;
+
+        if (solde === null) {
+
+            /*solde =500000000;*/
+
+            localStorage.setItem("solde", solde);
+        }
+
+        document.getElementById("solde").textContent =
+            Number(solde).toFixed(2);
+
+
+        function confirmerPaiement() {
+
+            let montant =
+                Number(document.getElementById("montant").value);
+
+            if (montant <= 0) {
+
+                alert("Entrez un montant valide.");
+
+                return;
+            }
+
+            if (montant > Number(solde)) {
+
+                alert("Solde insuffisant.");
+
+                return;
+            }
+
+            solde = Number(solde) - montant;
+
+            localStorage.setItem("solde", solde);
+
+            document.getElementById("solde").textContent =
+                solde.toFixed(2);
+
+            alert("Paiement effectué !");
+
+        }
+
+    </script>
+
+</body>
+
+</html>

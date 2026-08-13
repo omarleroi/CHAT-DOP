@@ -1,0 +1,26 @@
+body{
+	background-color: white;
+}
+img{
+	width: 300px;
+}
+h1 {
+	color: #818CF8;
+}
+h3 {
+	color: #818CF8;
+}
+strong{
+	color:blue;
+}
+.od{
+	border:1px solid green;
+}
+.do{
+	color:black;
+}
+button {
+    background-color: #333333;
+	color: white;
+    border-radius: 5px;
+}

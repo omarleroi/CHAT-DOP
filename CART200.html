@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOP - CART200</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+        }
+
+        .interface {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .menu {
+            width: 240px;
+            background: #111827;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 45px;
+            padding-left: 15px;
+        }
+
+        .menu a {
+            display: block;
+            color: #d1d5db;
+            text-decoration: none;
+            padding: 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+        }
+
+        .menu a:hover {
+            background: #374151;
+            color: white;
+        }
+
+        .contenu {
+            flex: 1;
+            padding: 45px;
+        }
+
+        .contenu h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .solde {
+            background: white;
+            width: 500px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .solde p {
+            color: #6b7280;
+            margin-bottom: 15px;
+        }
+
+        .solde h2 {
+            font-size: 42px;
+        }
+
+        .payer {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 35px;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="interface">
+
+        <aside class="menu">
+
+            <div class="logo">
+                ◉ DOP
+            </div>
+
+            <a href="CART200.html">🏠 Accueil</a>
+
+            <a href="#">👤 Compte</a>
+
+            <a href="mode de paye.html">💳 Paiement</a>
+
+            <a href="#">📋 Historique</a>
+
+            <a href="#">⚙️ Paramètres</a>
+
+        </aside>
+
+
+        <main class="contenu">
+
+            <h1>Bonjour 👋</h1>
+
+
+            <div class="solde">
+
+                <p>SOLDE DISPONIBLE</p>
+
+                <h2>
+                    <span id="solde">0</span> €
+                </h2>
+
+            </div>
+
+
+            <a href="mode de paye.html" class="payer">
+                PAYER
+            </a>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        let solde = Number(localStorage.getItem("solde")) || 500000000;
+
+           /*solde =500000000;*/
+            localStorage.setItem("solde", solde);
+
+        document.getElementById("solde").textContent =
+            Number(solde).toFixed(2);
+
+    </script>
+
+</body>
+
+</html>
