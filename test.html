@@ -1,23 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mon site</title>
+    <title>Ma calculatrice</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .calculatrice {
+            width: 250px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        #ecran {
+            width: 230px;
+            height: 40px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            text-align: right;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            margin: 3px;
+            font-size: 18px;
+        }
+    </style>
 </head>
+
 <body>
 
-<h1>Bienvenue sur mon site</h1>
+<div class="calculatrice">
 
-<p>Bonjour, je m'appelle Omar.</p>
+    <input type="text" id="ecran" readonly>
 
-<hr>
+    <br>
 
-<h2>Mes jeux préférés</h2>
+    <button onclick="ajouter('7')">7</button>
+    <button onclick="ajouter('8')">8</button>
+    <button onclick="ajouter('9')">9</button>
+    <button onclick="ajouter('/')">Ã·</button>
 
-<ul>
-    <li>Roblox</li>
-    <li>Minecraft</li>
-    <li>Fortnite</li>
-</ul>
+    <br>
+
+    <button onclick="ajouter('4')">4</button>
+    <button onclick="ajouter('5')">5</button>
+    <button onclick="ajouter('6')">6</button>
+    <button onclick="ajouter('*')">Ã—</button>
+
+    <br>
+
+    <button onclick="ajouter('1')">1</button>
+    <button onclick="ajouter('2')">2</button>
+    <button onclick="ajouter('3')">3</button>
+    <button onclick="ajouter('-')">âˆ’</button>
+
+    <br>
+
+    <button onclick="ajouter('0')">0</button>
+    <button onclick="effacer()">C</button>
+    <button onclick="calculer()">=</button>
+    <button onclick="ajouter('+')">+</button>
+
+</div>
+
+<script>
+    function ajouter(valeur) {
+        document.getElementById("ecran").value += valeur;
+    }
+
+    function effacer() {
+        document.getElementById("ecran").value = "";
+    }
+
+    function calculer() {
+        document.getElementById("ecran").value =
+            eval(document.getElementById("ecran").value);
+    }
+</script>
 
 </body>
 </html>
